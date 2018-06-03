@@ -1,12 +1,22 @@
 {-# OPTIONS_GHC -Wall #-}
 
+
 module CreditCard where
+
+---------------------------------- Exercise 1 ----------------------------------
 
 -- Convert an integer to a list of digits
 toDigits:: Integer -> [Integer]
 toDigits n
   | n <= 0    = []
   | otherwise = toDigits (n `div` 10) ++ [n `mod` 10]
+
+-- Same as toDigits but with the digits reversed
+toDigitsRev :: Integer -> [Integer]
+toDigitsRev n
+  | n <= 0    = []
+  | otherwise = n `mod` 10 : toDigitsRev (n `div` 10)
+
 
 toDigitsTest :: Bool
 toDigitsTest = and
@@ -16,13 +26,6 @@ toDigitsTest = and
     [] == toDigits 0,
     [] == toDigits (-17)
   ]
-
-
--- Same as toDigits but with the digits reversed
-toDigitsRev :: Integer -> [Integer]
-toDigitsRev n 
-  | n <= 0    = []
-  | otherwise = n `mod` 10 : toDigitsRev (n `div` 10)
 
 toDigitsRevTest :: Bool
 toDigitsRevTest = and
@@ -34,12 +37,12 @@ toDigitsRevTest = and
   ]
 
 
+---------------------------------- Exercise 2 ----------------------------------
+
 -- Double every other number beginning from the right
 doubleEveryOther :: [Integer] -> [Integer]
-doubleEveryOther [] = []
-doubleEveryOther (x:[]) = [x]
-doubleEveryOther (x:y:zs) | even (length zs) = 2*x : y : doubleEveryOther zs
-doubleEveryOther (x:y:zs)                    = x : 2*y : doubleEveryOther zs
+doubleEveryOther = reverse . zipWith (*) (cycle [1,2]) . reverse
+
 
 doubleEveryOtherTest :: Bool
 doubleEveryOtherTest = and
@@ -51,11 +54,12 @@ doubleEveryOtherTest = and
   ]
 
 
+---------------------------------- Exercise 3 ----------------------------------
+
 -- Returns the sum of all digits of each number of the list
--- The list contains a mix of one-digit and two-digit numbers
 sumDigits :: [Integer] -> Integer
-sumDigits [] = 0
-sumDigits (x:xs) = sum (toDigits x) + sumDigits xs
+sumDigits = sum . concat . map toDigits
+
 
 sumDigitsTest :: Bool
 sumDigitsTest = and
@@ -66,9 +70,12 @@ sumDigitsTest = and
   ]
 
 
+---------------------------------- Exercise 4 ----------------------------------
+
 -- Indicates whether or not a credit card number is valid
 validate :: Integer -> Bool
 validate x = (sumDigits . doubleEveryOther . toDigits $ x) `mod` 10 == 0
+
 
 validateTest :: Bool
 validateTest = and

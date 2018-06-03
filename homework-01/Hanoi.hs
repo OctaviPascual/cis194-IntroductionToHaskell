@@ -1,9 +1,14 @@
 {-# OPTIONS_GHC -Wall #-}
 
+
 module Hanoi where
+
 
 type Peg = String
 type Move = (Peg, Peg)
+
+
+---------------------------------- Exercise 5 ----------------------------------
 
 -- Return the list of moves to be performed to move n discs from the source
 -- peg to the destination peg using one auxiliary peg:
@@ -27,6 +32,8 @@ hanoiTest = and
   ]
 
 
+---------------------------------- Exercise 6 ----------------------------------
+
 -- Return the list of moves to be performed to move n discs from the source
 -- peg to the destination peg using two auxiliary pegs.
 -- We use the Frame-Stewart algorithm:
@@ -38,7 +45,7 @@ hanoiTest = and
 -- https://en.wikipedia.org/wiki/Tower_of_Hanoi#Frame%E2%80%93Stewart_algorithm
 hanoi4 :: Integer -> Peg -> Peg -> Peg -> Peg -> [Move]
 hanoi4 0 _ _ _ _ = []
-hanoi4 n src dst aux1 aux2 = 
+hanoi4 n src dst aux1 aux2 =
   moveFromSrcToAux1 ++ moveFromSrcToDst ++ moveFromAux1ToDst
   where
     moveFromSrcToAux1 = hanoi4 k src aux1 aux2 dst
