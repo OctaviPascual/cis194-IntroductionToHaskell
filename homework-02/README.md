@@ -1,14 +1,11 @@
 # Homework 2
 
 This homework contains the following files:
-
-- [Assignment](assignment.pdf)
-- [Log.hs (provided)](Log.hs)
-- [error.log (provided)](error.log)
-- [sample.log (provided)](sample.log)
-- [LogAnalysis.hs (file to submit)](LogAnalysis.hs)
-
-Next I try to explain how I solved each exercise.
+* [Assignment](assignment.pdf)
+* [Log.hs (provided)](Log.hs)
+* [error.log (provided)](error.log)
+* [sample.log (provided)](sample.log)
+* [LogAnalysis.hs (file to submit)](LogAnalysis.hs)
 
 ## Exercise 1
 

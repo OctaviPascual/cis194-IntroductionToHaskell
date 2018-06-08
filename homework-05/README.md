@@ -1,12 +1,11 @@
 # Homework 5
 
 This homework contains the following files:
-
-- [Assignment](assignment.pdf)
-- [ExprT.hs](ExprT.hs)
-- [Parser.hs](Parser.hs)
-- [StackVM.hs](StackVM.hs)
-- [Calc.hs (file to submit)](Calc.hs)
+* [Assignment](assignment.pdf)
+* [ExprT.hs](ExprT.hs)
+* [Parser.hs](Parser.hs)
+* [StackVM.hs](StackVM.hs)
+* [Calc.hs (file to submit)](Calc.hs)
 
 In this homework we implement a simple calculator using a domain-specific language (DSL). For arithmetic expressions, we are going to work with the following data type `ExprT`:
 

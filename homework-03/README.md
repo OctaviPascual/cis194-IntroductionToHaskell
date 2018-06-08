@@ -1,11 +1,8 @@
 # Homework 3
 
 This homework contains the following files:
-
-- [Assignment](assignment.pdf)
-- [Golf.hs (file to submit)](Golf.hs)
-
-Next I try to explain how I solved each exercise.
+* [Assignment](assignment.pdf)
+* [Golf.hs (file to submit)](Golf.hs)
 
 ## Exercise 1
 

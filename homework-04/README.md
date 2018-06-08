@@ -1,11 +1,8 @@
 # Homework 4
 
 This homework contains the following files:
-
-- [Assignment](assignment.pdf)
-- [HigherOrder.hs (file to submit)](HigherOrder.hs)
-
-Next I try to explain how I solved each exercise.
+* [Assignment](assignment.pdf)
+* [HigherOrder.hs (file to submit)](HigherOrder.hs)
 
 ## Exercise 1
 

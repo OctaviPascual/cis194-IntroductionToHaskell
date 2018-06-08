@@ -1,12 +1,9 @@
 # Homework 1
 
 This homework contains the following files:
-
-- [Assignment](assignment.pdf)
-- [CreditCard.hs (file to submit)](CreditCard.hs)
-- [Hanoi.hs (file to submit)](Hanoi.hs)
-
-Next I try to explain how I solved each exercise.
+* [Assignment](assignment.pdf)
+* [CreditCard.hs (file to submit)](CreditCard.hs)
+* [Hanoi.hs (file to submit)](Hanoi.hs)
 
 ## Exercise 1
 
