@@ -24,3 +24,5 @@ Finally, I tried to explain how I solved each exercise of the homework to rememb
 ## [Homework 4: Higher-order programming and type inference](homework-04)
 
 ## [Homework 5: More polymorphism and type classes](homework-05)
+
+## [Homework 6: Lazy evaluation](homework-06)
