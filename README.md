@@ -26,3 +26,6 @@ Finally, I tried to explain how I solved each exercise of the homework to rememb
 ## [Homework 5: More polymorphism and type classes](homework-05)
 
 ## [Homework 6: Lazy evaluation](homework-06)
+
+## [Homework 7: Folds and monoids](homework-07)
+
