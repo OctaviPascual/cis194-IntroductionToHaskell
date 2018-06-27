@@ -30,8 +30,7 @@ scores =
 
 -- Return the score of a character
 score :: Char -> Score
-score c = maybe 0 Score $ lookup c' scores
-  where c' = toUpper c
+score c = maybe 0 Score $ lookup (toUpper c) scores
 
 -- Return the score of a string
 scoreString :: String -> Score

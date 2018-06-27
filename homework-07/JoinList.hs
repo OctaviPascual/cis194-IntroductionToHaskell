@@ -57,49 +57,43 @@ tagTest = and
 
 ---------------------------------- Exercise 2 ----------------------------------
 
+
+-- Get the Int value of a Sized tag
+getSizeTag :: (Monoid b, Sized b) => JoinList b a -> Int
+getSizeTag = getSize . size . tag
+
 -- Finds the JoinList element at the specified index
 indexJ :: (Sized b, Monoid b) => Int -> JoinList b a -> Maybe a
-indexJ _ Empty     = Nothing
-
-indexJ 0 (Single _ a) = Just a
-indexJ _ (Single _ _) = Nothing
-
-indexJ i (Append m jl1 jl2)
-  | i < 0 || i >= root = Nothing
-  | i < left           = indexJ i jl1
-  | otherwise          = indexJ (i - left) jl2
-  where root = getSize . size $ m
-        left = getSize . size . tag $ jl1
+indexJ _ Empty                   = Nothing
+indexJ i _  | i < 0              = Nothing
+indexJ i jl | i >= getSizeTag jl = Nothing
+indexJ _ (Single _ a)            = Just a
+indexJ i (Append _ jl1 jl2)
+  | i < left                     = indexJ i jl1
+  | otherwise                    = indexJ (i - left) jl2
+  where left = getSizeTag jl1
 
 -- Drops the first n elements from a JoinList
 dropJ :: (Sized b, Monoid b) => Int -> JoinList b a -> JoinList b a
-dropJ n jl | n <= 0 = jl
-
-dropJ _ Empty = Empty
-
-dropJ _ (Single _ _) = Empty
-
-dropJ n (Append m jl1 jl2)
-  | n >= root = Empty
-  | n < left  = dropJ n jl1 +++ jl2
-  | otherwise = dropJ n jl1 +++ dropJ (n - left) jl2
-  where root = getSize . size $ m
-        left = getSize . size . tag $ jl1
+dropJ _ Empty                   = Empty
+dropJ n jl | n <= 0             = jl
+dropJ n jl | n >= getSizeTag jl = Empty
+dropJ _ (Single _ _)            = Empty
+dropJ n (Append _ jl1 jl2)
+  | n < left                    = dropJ n jl1 +++ jl2
+  | otherwise                   = dropJ (n - left) jl2
+  where left = getSizeTag jl1
 
 -- Returns the first n elements from a JoinList
 takeJ :: (Sized b, Monoid b) => Int -> JoinList b a -> JoinList b a
-takeJ n _ | n <= 0 = Empty
-
-takeJ _ Empty = Empty
-
-takeJ _ jl@(Single _ _) = jl
-
-takeJ n jl@(Append m jl1 jl2)
-  | n >= root = jl
-  | n < left  = takeJ n jl1
-  | otherwise = takeJ n jl1 +++ takeJ (n - left) jl2
-  where root = getSize . size $ m
-        left = getSize . size . tag $ jl1
+takeJ _ Empty                   = Empty
+takeJ n _  | n <= 0             = Empty
+takeJ n jl | n >= getSizeTag jl = jl
+takeJ _ jl@(Single _ _)         = jl
+takeJ n (Append _ jl1 jl2)
+  | n < left                    = takeJ n jl1
+  | otherwise                   = jl1 +++ takeJ (n - left) jl2
+  where left = getSizeTag jl1
 
 -- Safe list indexing function (provided)
 (!!?) :: [a] -> Int -> Maybe a
@@ -175,13 +169,17 @@ scoreLineTest = and
 
 ---------------------------------- Exercise 4 ----------------------------------
 
+instance Monoid m => Monoid (JoinList m a) where
+  mempty  = Empty
+  mappend = (+++)
+
 instance Buffer (JoinList (Score, Size) String) where
   toString          = unlines . jlToList
-  fromString        = foldr1 (+++) . fmap createJoinList . lines
+  fromString        = mconcat . fmap createJoinList . lines
     where createJoinList s = Single (scoreString s, Size 1) s
   line              = indexJ
   replaceLine n l b = takeJ n b +++ fromString l +++ dropJ (n+1) b
-  numLines          = getSize  . snd . tag
+  numLines          = getSizeTag
   value             = getScore . fst . tag
 
 reify :: JoinList (Score, Size) String -> JoinList (Score, Size) String
