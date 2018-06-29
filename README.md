@@ -29,3 +29,5 @@ Finally, I tried to explain how I solved each exercise of the homework to rememb
 ## [Homework 6: Lazy evaluation](homework-06)
 
 ## [Homework 7: Folds and monoids](homework-07)
+
+## [Homework 8: IO](homework-08)
