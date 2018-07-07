@@ -13,6 +13,7 @@ Apart from the material of the course, I also checked the following materials:
 In addition, since I took the course in an autonomous way, I used some resources to check whether my solutions were correct or not. I always try to solve the problems on my own and I only may take a look if I am really stuck with an exercise. However, when I have already solved the whole assignment, I like to see in detail how others solved it and that makes me learn a lot!
 * [bschwb cis194-solutions repository](https://github.com/bschwb/cis194-solutions)
 * [baugarten CIS-194 repository](https://github.com/baugarten/CIS-194)
+* [surganov cis914 repository](https://github.com/surganov/cis194)
 
 Finally, I tried to explain how I solved each exercise of the homework to remember how I came to the final solution. Moreover, it may also help the reader to understand the reasoning behind each solution.
 
