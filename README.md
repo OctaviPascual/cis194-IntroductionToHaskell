@@ -38,3 +38,5 @@ Finally, I tried to explain how I solved each exercise of the homework to rememb
 ## [Homework 10: Applicative Functors (part 1)](homework-10)
 
 ## [Homework 11: Applicative Functors (part 2)](homework-11)
+
+## [Homework 12: Monads](homework-12)
