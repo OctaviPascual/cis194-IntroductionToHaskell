@@ -226,7 +226,7 @@ battleProb 1 2 = battle1vs2Prob
 battleProb 2 2 = battle2vs2Prob
 battleProb _ _ = battle3vs2Prob
 
--- Give a battlefield, returns another one with casualties taken into account
+-- Given a battlefield, returns another one with casualties taken into account
 updateCasualties :: Battlefield -> Casualties -> Battlefield
 updateCasualties (Battlefield as ds) OneA      = Battlefield (as-1) ds
 updateCasualties (Battlefield as ds) TwoAs     = Battlefield (as-2) ds

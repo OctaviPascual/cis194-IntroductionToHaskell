@@ -23,7 +23,7 @@ cabal install MonadRandom
 cabal install monad-loops
 ```
 
-By the way, I found a very good (post)[https://pbrisbin.com/posts/applicative_functors/] about when to use Applicative Functors and when to use Monads.
+By the way, I found a very good [post](https://pbrisbin.com/posts/applicative_functors/) about when to use Applicative Functors and when to use Monads.
 
 ## Exercise 1
 
@@ -127,12 +127,18 @@ hasAttackerWon (Battlefield _ ds) = ds == 0
 
 Now we can easily implement `successProb`:
 
-```hakell
+```haskell
 successProb :: Battlefield -> Rand StdGen Double
 successProb b = do
   simulations <- replicateM runs $ invade b
   let wins = length . filter hasAttackerWon $ simulations
   return $ fromIntegral wins / fromIntegral runs
+```
+
+By the way, if you want to try this function in the GHCi, use the following command:
+
+```ghci
+*Risk> evalRandIO . successProb $ Battlefield 20 20
 ```
 
 ## Exercise 5
@@ -413,7 +419,7 @@ Nevertheless, if you think about it, when we start with `Battlefield 20 20` ther
 
 To speed up the program we need to use [memoization](https://en.wikipedia.org/wiki/Memoization). In imperative languages we usually build a map and check whether or not we have already computed the result of the current state. However in Haskell we can use lazyness to implement a neat and unique way of doing memoization.
 
-I used this [answer](https://stackoverflow.com/a/5553390) to implement memoization with a lists of lists. The nice thing about doing it this way is that we don't have to think about how to construct the table: lazy evaluation ensures that values will be computed as needed. Note that this is not the most efficient way of implementing memoization since accessing elements in a list is linear in time. However, for this exercise it was not a problem.
+I used this [post](https://stackoverflow.com/a/5553390) to implement memoization with a lists of lists. The nice thing about doing it this way is that we don't have to think about how to construct the table: lazy evaluation ensures that values will be computed as needed. Note that this is not the most efficient way of implementing memoization since accessing elements in a list is linear in time. However, for this exercise it was not a problem.
 
 The `exactSuccessProb` function looks almost the same as before, except we have changed `exactSuccessProb nextBattlefield` for `memoizedProb nextBattlefield`. Obviously we have also added the functions that allow us to memoize the results:
 
